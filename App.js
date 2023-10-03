@@ -9,8 +9,15 @@ const Post = styled.View`
 `;
 
 const PostImage = styled.Image`
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-right: 12px;
+`;
+
+const PostTitle = styled.Text`
+  font-size: 16px;
+  font-weight: 700;
 `;
 
 export default function App() {
@@ -18,6 +25,7 @@ export default function App() {
     <View>
       <Post>
         <PostImage source={{ uri: "https://picsum.photos/200/300" }} />
+        <PostTitle>Test Article</PostTitle>
       </Post>
       <StatusBar theme="auto" />
     </View>
