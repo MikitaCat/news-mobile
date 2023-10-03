@@ -5,6 +5,7 @@ import {
   View,
   Text,
   RefreshControl,
+  TouchableOpacity,
 } from "react-native";
 import Post from "./components/Post";
 import { useEffect, useState } from "react";
@@ -43,11 +44,13 @@ export default function App() {
         }
         data={news}
         renderItem={({ item }) => (
-          <Post
-            createdAt={item.createdAt}
-            title={item.title}
-            imageUrl={item.imageUrl}
-          />
+          <TouchableOpacity onPress={() => alert("pressed")}>
+            <Post
+              createdAt={item.createdAt}
+              title={item.title}
+              imageUrl={item.imageUrl}
+            />
+          </TouchableOpacity>
         )}
       />
       {/* {news.map((obj) => {
