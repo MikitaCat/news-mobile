@@ -32,7 +32,11 @@ export default function HomeScreen({ navigation }) {
         }
         data={news}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate("Post")}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Post", { id: item.id, title: item.title })
+            }
+          >
             <Post
               createdAt={item.createdAt}
               title={item.title}

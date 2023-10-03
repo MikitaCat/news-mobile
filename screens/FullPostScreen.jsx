@@ -16,14 +16,15 @@ const PostText = styled.Text`
   line-height: 24px;
 `;
 
-export const FullPostScreen = () => {
+export const FullPostScreen = ({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [article, setArticle] = useState([]);
+  const { id, title } = route.params;
 
   const fetchPosts = () => {
     setIsLoading(true);
     axios
-      .get("https://651c49b0194f77f2a5afa847.mockapi.io/news/1")
+      .get(`https://651c49b0194f77f2a5afa847.mockapi.io/news/${id}`)
       .then(({ data }) => {
         setArticle(data);
         console.log("DATA", article);
