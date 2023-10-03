@@ -1,14 +1,8 @@
-import {
-  ActivityIndicator,
-  FlatList,
-  View,
-  Text,
-  RefreshControl,
-  TouchableOpacity,
-} from "react-native";
+import { FlatList, RefreshControl, TouchableOpacity } from "react-native";
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 import { getPosts } from "../API/getPosts";
+import { Loader } from "../components/Loader";
 
 export default function HomeScreen() {
   const [news, setNews] = useState([]);
@@ -27,12 +21,7 @@ export default function HomeScreen() {
   useEffect(fetchPosts, []);
 
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size={40} color="#0000ff" />
-        <Text style={{ marginTop: 15 }}>Loading</Text>
-      </View>
-    );
+    return <Loader />;
   }
 
   return (
