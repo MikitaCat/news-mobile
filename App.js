@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.testText}>Hello World111!!!!!!!!!!!!!!!!!!!!!!!</Text>
-      <Text>Message</Text>
+      <Text style={{ fontSize: 30, color: "blue" }}>Message</Text>
     </View>
   );
 }
