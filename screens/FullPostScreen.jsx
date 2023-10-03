@@ -16,7 +16,7 @@ const PostText = styled.Text`
   line-height: 24px;
 `;
 
-export const FullPostScreen = ({ route }) => {
+export const FullPostScreen = ({ route, navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [article, setArticle] = useState([]);
   const { id, title } = route.params;
@@ -33,7 +33,10 @@ export const FullPostScreen = ({ route }) => {
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(fetchPosts, []);
+  useEffect(() => {
+    navigation.setOptions({ title: title });
+    fetchPosts();
+  }, []);
 
   if (isLoading) {
     return <Loader />;
