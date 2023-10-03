@@ -31,13 +31,13 @@ const PostDate = styled.Text`
   margin-top: 2px;
 `;
 
-export default function Post() {
+export default function Post({ imageUrl, title, createdAt }) {
   return (
     <PostView>
-      <PostImage source={{ uri: "https://picsum.photos/200/300" }} />
+      <PostImage source={{ uri: imageUrl }} />
       <PostDetails>
-        <PostTitle>Test Article</PostTitle>
-        <PostDate>03/10/2023</PostDate>
+        <PostTitle>{title}</PostTitle>
+        <PostDate>{createdAt}</PostDate>
       </PostDetails>
     </PostView>
   );
