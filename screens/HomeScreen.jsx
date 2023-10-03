@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../API/getPosts";
 import { Loader } from "../components/Loader";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ export default function HomeScreen() {
         }
         data={news}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => alert("pressed")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Post")}>
             <Post
               createdAt={item.createdAt}
               title={item.title}
