@@ -4,6 +4,7 @@ import {
   StatusBar,
   View,
   Text,
+  RefreshControl,
 } from "react-native";
 import Post from "./components/Post";
 import { useEffect, useState } from "react";
@@ -13,7 +14,7 @@ export default function App() {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchPosts = () => {
     setIsLoading(true);
     getPosts()
       .then((data) => {
@@ -21,7 +22,9 @@ export default function App() {
       })
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  }, []);
+  };
+
+  useEffect(fetchPosts, []);
 
   if (isLoading) {
     return (
@@ -35,6 +38,9 @@ export default function App() {
   return (
     <View>
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />
+        }
         data={news}
         renderItem={({ item }) => (
           <Post
