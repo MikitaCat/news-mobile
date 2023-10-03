@@ -1,33 +1,25 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar, View, Image } from "react-native";
 import styled from "styled-components/native";
 
 const Post = styled.View`
   padding: 15px;
-  height: 100px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-bottom-style: solid;
+`;
+
+const PostImage = styled.Image`
   width: 100px;
-  background-color: red;
+  height: 100px;
 `;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.testText}>Hello World111!!!!!!!!!!!!!!!!!!!!!!!</Text>
-      <Text style={{ fontSize: 30, color: "blue" }}>Message</Text>
-      <Post />
+    <View>
+      <Post>
+        <PostImage source={{ uri: "https://picsum.photos/200/300" }} />
+      </Post>
+      <StatusBar theme="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  testText: {
-    fontSize: 23,
-    color: "red",
-  },
-});
